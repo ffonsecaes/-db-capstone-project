@@ -124,3 +124,28 @@ VALUES
 (15, '2025-12-27', 3, 500.00, 1, 3, 2, 3, 4);
 
 SELECT * FROM orders;
+
+
+SET SQL_SAFE_UPDATES = 0;
+#DELETE FROM bookings WHERE 1=1;
+DELETE FROM bookings;
+SELECT * FROM bookings;
+
+ALTER TABLE bookings 
+ADD COLUMN customer_id INT;
+
+ALTER TABLE bookings
+ADD FOREIGN KEY (customer_id) 
+REFERENCES customers(customer_id);
+
+SHOW COLUMNS FROM bookings;
+
+INSERT INTO bookings(booking_id, date, table_number, customer_id)
+VALUES
+(1, '2022-10-10', 5, 1),
+(2, '2022-11-12', 3, 3),
+(3, '2022-10-11', 2, 2),
+(4, '2022-10-13', 2, 1);
+
+SELECT * FROM bookings;
+
